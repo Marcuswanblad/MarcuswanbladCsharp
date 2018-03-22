@@ -50,7 +50,7 @@ namespace Uppgift3WindowsForms
             Country Holland = new Country("Netherlands", 9000000, 50000, Cities);
             Country Usa = new Country("Spain", 30000000, 20000, Cities);
 
-
+           
 
             chart1.Titles.Add ("Barcelona price");
             chart1.ChartAreas[0].AxisX.Title = "Room";
@@ -76,17 +76,16 @@ namespace Uppgift3WindowsForms
             chart6.ChartAreas[0].AxisX.Title = "Price";
             chart6.ChartAreas[0].AxisY.Title = "Overall Satisfation";
 
-
+            
             //Histogram 1,2 och 3
             foreach (Accommodation a in barcelonaList)
             {
                chart1.Series["Series1"].Points.AddY(a.Price);
                     }
+                    
             
             chart1.Series["Series1"].ChartType = SeriesChartType.Column;
-
-
-
+            
 
             foreach (Accommodation a in amsterdamList)
             {
@@ -124,16 +123,6 @@ namespace Uppgift3WindowsForms
 
             chart6.Series["Series1"].ChartType = SeriesChartType.Point;
 
-
-
-
-
-
-            /*
-                         var Listatest = from Price in bostonList
-                            where Price.Room_type == "private room"
-                            select Price;
-             */
 
         }
         //Metod för att fylla Accommodation från SQL
