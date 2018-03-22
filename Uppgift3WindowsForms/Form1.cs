@@ -70,7 +70,7 @@ namespace Uppgift3WindowsForms
 
             chart5.Titles.Add("Amsterdam price/overall satisfaction");
             chart5.ChartAreas[0].AxisX.Title = "Price";
-            chart6.ChartAreas[0].AxisY.Title = "Overall Satisfation";
+            chart5.ChartAreas[0].AxisY.Title = "Overall Satisfation";
 
             chart6.Titles.Add("Boston price/overall satisfaction");
             chart6.ChartAreas[0].AxisX.Title = "Price";
