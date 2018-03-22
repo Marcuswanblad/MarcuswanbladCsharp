@@ -11,7 +11,9 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Data.SqlClient;
 
 
-namespace Uppgift3WindowsForms
+namespace Uppgift3WindowsForms 
+    /* Välstrukturerad kod som verkligen visar att du har koll på den. Bra korta och enkla kommentarer som 
+    gör att det blir lätt att läsa och förstå koden. Mycket bra jobbat! /MH */
 {
     public partial class Form1 : Form
     {
@@ -28,7 +30,7 @@ namespace Uppgift3WindowsForms
         private void Form1_Load(object sender, EventArgs e)
         {
             
-            List<Accommodation> bostonList = GetList("select * from boston where room_type = 'private room'");
+            List<Accommodation> bostonList = GetList("select * from boston where room_type = 'private room'"); //Enkelt att se vad listan innehåller när "queryt" är inne i koden, vilket är bra tycker jag. /MH
             List<Accommodation> amsterdamList = GetList("select * from amsterdam where room_type = 'private room'");
             List<Accommodation> barcelonaList = GetList("select * from barcelona where room_type = 'private room'");
 
@@ -38,7 +40,7 @@ namespace Uppgift3WindowsForms
 
 
             //Skapa Cityobjekt
-            City Boston = new City ( "Boston", 100000, 3000, bostonList);
+            City Boston = new City ( "Boston", 100000, 3000, bostonList); //Bra kommentarer som är lätta att förstå /MH
             City Amsterdam = new City("Amsterdam", 200000, 3000, amsterdamList);
             City Barcelona = new City("Barcelona", 100000, 3000, barcelonaList);
 
@@ -52,7 +54,7 @@ namespace Uppgift3WindowsForms
 
            
 
-            chart1.Titles.Add ("Barcelona price");
+            chart1.Titles.Add ("Barcelona price"); //Snyggt att du klumpat ihop chart 1, 2, osv. 
             chart1.ChartAreas[0].AxisX.Title = "Room";
             chart1.ChartAreas[0].AxisY.Title = "Price";
 
