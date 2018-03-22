@@ -28,15 +28,10 @@ namespace Uppgift3WindowsForms
         private void Form1_Load(object sender, EventArgs e)
         {
             
-            List<Accommodation> bostonList = GetList("select * from boston where room_type = 'private room'");
-            List<Accommodation> amsterdamList = GetList("select * from amsterdam where room_type = 'private room'");
-            List<Accommodation> barcelonaList = GetList("select * from barcelona where room_type = 'private room'");
-
-            List<Accommodation> bostonListclean = GetList("select * from boston where overall_satisfaction < 4.5");
-            List<Accommodation> amsterdamListclean = GetList("select * from amsterdam where overall_satisfaction < 4.5");
-            List<Accommodation> barcelonaListclean = GetList("select * from barcelona where overall_satisfaction < 4.5");
-
-
+            List<Accommodation> bostonList = GetList("select * from boston");
+            List<Accommodation> amsterdamList = GetList("select * from amsterdam");
+            List<Accommodation> barcelonaList = GetList("select * from barcelona");
+            
             //Skapa Cityobjekt
             City Boston = new City ( "Boston", 100000, 3000, bostonList);
             City Amsterdam = new City("Amsterdam", 200000, 3000, amsterdamList);
@@ -76,9 +71,9 @@ namespace Uppgift3WindowsForms
             chart6.ChartAreas[0].AxisX.Title = "Price";
             chart6.ChartAreas[0].AxisY.Title = "Overall Satisfation";
 
-            
+
             //Histogram 1,2 och 3
-            foreach (Accommodation a in barcelonaList)
+            foreach (Accommodation a in barcelonaList.Where(x => x.Room_type == "Private room"))
             {
                chart1.Series["Series1"].Points.AddY(a.Price);
                     }
@@ -87,14 +82,14 @@ namespace Uppgift3WindowsForms
             chart1.Series["Series1"].ChartType = SeriesChartType.Column;
             
 
-            foreach (Accommodation a in amsterdamList)
+            foreach (Accommodation a in amsterdamList.Where(x => x.Room_type == "Private room"))
             {
                 chart2.Series["Series1"].Points.AddY(a.Price);
             }
 
             chart2.Series["Series1"].ChartType = SeriesChartType.Column;
 
-            foreach (Accommodation a in bostonList)
+            foreach (Accommodation a in bostonList.Where(x => x.Room_type == "Private room"))
             {
                 chart3.Series["Series1"].Points.AddY(a.Price);
             }
@@ -102,21 +97,21 @@ namespace Uppgift3WindowsForms
             chart3.Series["Series1"].ChartType = SeriesChartType.Column;
 
             //Scatterplott 1,2 och 3 
-            foreach (Accommodation a in barcelonaListclean)
+            foreach (Accommodation a in barcelonaList.Where(x => x.Overall_satisfaction != 0 && x.Overall_satisfaction < 4.5))
             {
                 chart4.Series["Series1"].Points.AddXY(a.Price, a.Overall_satisfaction);
             }
 
             chart4.Series["Series1"].ChartType = SeriesChartType.Point;
 
-            foreach (Accommodation a in amsterdamListclean)
+            foreach (Accommodation a in amsterdamList.Where(x => x.Overall_satisfaction != 0 && x.Overall_satisfaction < 4.5))
             {
                 chart5.Series["Series1"].Points.AddXY(a.Price, a.Overall_satisfaction);
             }
 
             chart5.Series["Series1"].ChartType = SeriesChartType.Point;
 
-            foreach (Accommodation a in bostonListclean)
+            foreach (Accommodation a in bostonList.Where(x => x.Overall_satisfaction != 0 && x.Overall_satisfaction < 4.5))
             {
                 chart6.Series["Series1"].Points.AddXY(a.Price, a.Overall_satisfaction);
             }
